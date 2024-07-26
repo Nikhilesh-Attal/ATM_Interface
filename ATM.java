@@ -10,20 +10,18 @@ class Bank_User{
         System.out.println("balance = "+balance);
     }
 
-    static int deposite(){
+    static int deposite(int amount){
         int amt,new_bal;
-        System.out.println("Enter the amount to deposite");
-        amt = a.nextInt();
+        amt = amount;
         new_bal = amt+balance;
         System.out.println("Your updated bank balance = "+new_bal);
         balance=new_bal;
         return balance;
     }
 
-    static int withdraw(){
+    static int withdraw(int amount){
         int debit,new_bal;
-        System.out.println("Enter the amount to withdraw");
-        debit = a.nextInt();
+        debit = amount;
         new_bal = balance - debit;
         if(new_bal>min_bal){
             System.out.println("Now you can withdraw your money");
@@ -38,13 +36,15 @@ class Bank_User{
 }
 
 public class ATM{
-    static Scanner s =new Scanner(System.in);
-    static ATM atm = new ATM();
+    //static 
+    //static 
         
     public static void main(String args[]){
-        int pin,acc,cho;
+        int pin,acc,cho,val;
         Bank_User b = new Bank_User();
-        
+        Scanner s =new Scanner(System.in);
+
+        //List of function display on screen of ATM machine
             System.out.println("\tWelcome to ATM");
             System.out.println("Enter the account number");
             acc = s.nextInt();
@@ -59,14 +59,30 @@ public class ATM{
                     System.out.println("Enter 3 to deposite amount");;
                     System.out.println("Enter 0 for exit");
                     cho = s.nextInt();
+                    
                     switch(cho){
-                        case 0: System.exit(0);
+                        case 0: 
+                            System.exit(0);
                             break;
-                        case 1: b.checkBalance();
+                        
+                        case 1: 
+                            b.checkBalance();
                             break;
-                        case 2: b.withdraw();
+                        
+                        case 2: 
+                            System.out.println("Enter the amount to deposite");
+                            val = s.nextInt();
+                            b.withdraw(val);
                             break;
-                        case 3: b.deposite();
+                        
+                        case 3: 
+                            System.out.println("Enter the amount to deposite");
+                            val = s.nextInt();
+                            b.deposite(val);
+                            break;
+
+                        default:
+                            System.out.println("Please enter the correct input");
                             break;
                     }
                 }
